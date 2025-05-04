@@ -1,0 +1,82 @@
+Simulateur d'Impôt sur le Revenu
+
+Ce projet permet de simuler le calcul de l'impôt sur le revenu en fonction de la situation familiale et des revenus du foyer. Le simulateur prend en compte divers paramètres, tels que les tranches d'imposition, la décote, la contribution exceptionnelle et les parts fiscales, pour fournir une estimation précise de l'impôt net à payer.
+
+Le projet est structuré de manière à séparer les différentes étapes du calcul de l'impôt dans des classes utilitaires distinctes, rendant ainsi le code modulaire et facile à maintenir.
+
+Description des classes
+
+1. Simulateur
+La classe principale du projet qui orchestre le calcul de l'impôt. Elle utilise différentes classes utilitaires pour :
+
+- Calculer les abattements.
+- Calculer le revenu fiscal de référence.
+- Déterminer le nombre de parts fiscales en fonction de la situation familiale.
+- Calculer l'impôt brut avant décote.
+- Appliquer la décote si nécessaire.
+- Calculer la contribution exceptionnelle.
+- Calculer l'impôt total à payer après décote.
+
+
+
+2. TaxCalculator
+
+La classe TaxCalculator est responsable du calcul de l'impôt brut avant décote. Elle applique les tranches d'imposition et les taux correspondants pour calculer l'impôt en fonction du revenu fiscal de référence et du nombre de parts fiscales.
+
+- Limites de tranches : Ce tableau définit les seuils de revenu pour chaque tranche d'imposition.
+- Taux d'imposition : Ce tableau définit les taux appliqués aux différentes tranches.
+
+
+
+3. AbattementCalculator
+
+La classe AbattementCalculator permet de calculer l'abattement fiscal, qui est appliqué au revenu net du foyer pour déterminer le revenu fiscal de référence. Elle prend en compte les revenus des deux déclarants ainsi que leur situation familiale.
+
+
+
+4. ContributionCalculator
+
+La classe ContributionCalculator calcule la contribution exceptionnelle sur les hauts revenus. Elle applique un taux progressif en fonction des limites définies pour les célibataires et les couples.
+
+
+
+5. DecoteCalculator
+
+La classe DecoteCalculator calcule la décote applicable à l'impôt brut, le cas échéant. Elle permet de réduire l'impôt à payer pour les foyers dont l'impôt brut est inférieur à un certain seuil.
+
+
+
+6. PartCalculator
+
+La classe PartCalculator est responsable du calcul du nombre de parts fiscales pour un foyer en fonction de la situation familiale (célibataire, marié, pacsé, etc.) et du nombre d'enfants à charge. Elle prend également en compte les enfants handicapés et les parents isolés.
+
+
+
+7. SituationFamiliale
+
+Cette classe énumère les différentes situations familiales possibles, telles que célibataire, marié, pacsé, divorcé, et veuf. Ces situations sont utilisées par les autres classes pour ajuster les calculs en fonction des spécificités fiscales de chaque situation.
+
+
+
+Fonctionnalités du simulateur
+
+Calcul de l'impôt brut : Le simulateur calcule l'impôt brut en appliquant les tranches d'imposition progressives.
+
+Prise en compte de la décote : Si l'impôt brut est inférieur à un seuil spécifique, une décote peut être appliquée pour réduire l'impôt final.
+
+Contribution exceptionnelle : Un calcul supplémentaire est effectué pour les foyers ayant des revenus élevés, afin d'ajouter une contribution exceptionnelle.
+
+Nombre de parts fiscales : Le calcul du nombre de parts fiscales permet de diviser le revenu fiscal entre les différentes parts, selon la situation familiale et le nombre d'enfants.
+
+Validation des données : Avant de procéder au calcul, le simulateur vérifie que les données fournies sont valides, en vérifiant notamment les valeurs des revenus et des enfants.
+
+
+Comment utiliser le simulateur
+Pour utiliser le simulateur, vous devez instancier la classe Simulateur et appeler la méthode calculImpot. Cette méthode prend en paramètre les informations suivantes :
+
+Le revenu net du déclarant 1.
+Le revenu net du déclarant 2 (si applicable).
+La situation familiale (célibataire, marié, etc.).
+Le nombre d'enfants à charge.
+Le nombre d'enfants handicapés.
+Un indicateur pour savoir si le foyer est un parent isolé.
